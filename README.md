@@ -1,4 +1,4 @@
-# Class diagram
+# Activity diagram
 - Elfe flow
 ![github java_santa_factory_ff5-elf menu - activity Diagram ](https://github.com/user-attachments/assets/993e7387-4736-4a9a-a9f3-1cbdfa03e7a1)
 
