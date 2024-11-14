@@ -6,5 +6,5 @@
 ![github java_santa_factory_ff5-Mr Claus - activity Diagram](https://github.com/user-attachments/assets/ab85790e-a9db-4de7-a669-49b1ea779277)
 
 # Class diagram
-![github java_santa_factory_ff5-Class Diagram](https://github.com/user-attachments/assets/7da44d61-7b53-416d-972d-bd9634ad1f8e)
+![github java_santa_factory_ff5-Class Diagram (2)](https://github.com/user-attachments/assets/a07bb1b5-19c7-4f04-81db-752e79319832)
 
