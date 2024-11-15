@@ -1,20 +1,25 @@
 package dev.proyect.santa_factory.models;
 
 public abstract class Toy {
-    private int id;
+    private String id;
     private String title;
+    private boolean isGoodToy;
 
-    public Toy(int id, String title){
-        this.id = id;
+    public Toy(String title, boolean isGoodToy){
         this.title = title;
+        this.isGoodToy = isGoodToy;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        if (isGoodToy) {
+            this.id = "B" + id;
+        } else {
+            this.id = "M" + id;
+        }
     }
 
     public String getTitle() {

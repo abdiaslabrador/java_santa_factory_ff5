@@ -3,11 +3,14 @@ package dev.proyect.santa_factory.models;
 public class GoodChildToy extends Toy{
 
     private String brand;
-    private String recommendAge;
+    private int recommendAge;
     private String category;
 
-    GoodChildToy(int id, String title){
-        super(id, title);
+    public GoodChildToy(String title, boolean isGoodToy, String brand, int recommendAge, String category){
+        super(title, isGoodToy);
+        this.brand = brand;
+        this.recommendAge = recommendAge;
+        this.category = category;
     }
 
 
@@ -21,12 +24,12 @@ public class GoodChildToy extends Toy{
     }
 
 
-    public String getRecommendAge() {
+    public int getRecommendAge() {
         return recommendAge;
     }
 
 
-    public void setRecommendAge(String recommendAge) {
+    public void setRecommendAge(int recommendAge) {
         this.recommendAge = recommendAge;
     }
 
@@ -39,5 +42,6 @@ public class GoodChildToy extends Toy{
     public void setCategory(String category) {
         this.category = category;
     }
-
+    
+    
 }
