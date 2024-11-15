@@ -8,6 +8,6 @@ import dev.proyect.santa_factory.models.BadChildToy;
 
 
 public class Database {
-    public static List<GoodChildToy>  goodChildrenToys = new ArrayList<>();
-    public static List<BadChildToy> badChildrenToys = new ArrayList<>();
+    public static List<GoodChildToy>  goodChildrenToys = new ArrayList<GoodChildToy>();
+    public static List<BadChildToy> badChildrenToys = new ArrayList<BadChildToy>();
 }

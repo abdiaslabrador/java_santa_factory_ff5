@@ -4,7 +4,7 @@ import dev.proyect.santa_factory.models.Toy;
 
 public abstract class CloseSessionView extends View{
     public static void showCloseSession() {
-        System.out.println("Sesión cerrada correctamente.");
+        System.out.println("\nSesión cerrada correctamente.");
     }
 
     public static void showToy(Toy toy) {

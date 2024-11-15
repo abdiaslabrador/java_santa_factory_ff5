@@ -1,7 +1,11 @@
 package dev.proyect.santa_factory.views;
 
+import java.util.List;
+
 import dev.proyect.santa_factory.dtos.BadChildToyDto;
 import dev.proyect.santa_factory.dtos.GoodChildToyDto;
+import dev.proyect.santa_factory.models.BadChildToy;
+import dev.proyect.santa_factory.models.GoodChildToy;
 
 public class ElfView extends CloseSessionView {
 
@@ -60,4 +64,20 @@ public class ElfView extends CloseSessionView {
         System.out.println("\nJuguete añadido con éxito");
     }    
     
+    public static void showGoodAndBadToys(List<GoodChildToy> goodChildtoys, List<BadChildToy> badChildtoys){
+        showGoodChidrenToys(goodChildtoys);
+        showBadChidrenToys(badChildtoys);
+    }
+
+    public static void showGoodChidrenToys(List<GoodChildToy> toys){
+        for (GoodChildToy goodChildToy : toys) {
+            System.out.println(goodChildToy.toString());
+        }
+    }
+
+    public static void showBadChidrenToys(List<BadChildToy> toys){
+        for (BadChildToy badChildToy : toys) {
+            System.out.println(badChildToy.toString());
+        }
+    }
 }

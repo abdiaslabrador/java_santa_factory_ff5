@@ -33,7 +33,10 @@ public class ElfController {
                     addBadChildToy();
                 }
             }
-            if(selection == 4){
+            else if(selection == 2){
+                showToys();
+            }
+            else if(selection == 4){
                 ElfView.showCloseSession();
             }
         }while(selection != 4);
@@ -51,4 +54,9 @@ public class ElfController {
         badToyRepository.save(new BadChildToy(bToyDto.title(), bToyDto.content()));
         ElfView.showToyAdded();
     }
+
+    public void showToys(){
+        ElfView.showGoodAndBadToys(goodToyRepository.getAll() , badToyRepository.getAll());
+    }
+
 }
