@@ -5,6 +5,9 @@ import dev.proyect.santa_factory.views.ElfView;
 import dev.proyect.santa_factory.models.BadChildToy;
 import dev.proyect.santa_factory.models.GoodChildToy;
 import dev.proyect.santa_factory.dtos.GoodChildToyDto;
+
+import java.util.List;
+
 import dev.proyect.santa_factory.dtos.BadChildToyDto;
 
 
@@ -19,44 +22,23 @@ public class ElfController {
         badToyRepository = new BadToyRepository();
     }
 
-    public  void elfMenu(){
-        int selection;
-        int goodOrbadSelection;
-        do{
-            selection = ElfView.showElfMenu();
-            if(selection == 1){
-                goodOrbadSelection = ElfView.showToyMenu();
-                if(goodOrbadSelection == 1){
-                    addGoodChildToy();
-                }
-                if(goodOrbadSelection == 2){
-                    addBadChildToy();
-                }
-            }
-            else if(selection == 2){
-                showToys();
-            }
-            else if(selection == 4){
-                ElfView.showCloseSession();
-            }
-        }while(selection != 4);
-            
-    }
-
-    private void addGoodChildToy(){
-        GoodChildToyDto gToyDto = ElfView.createGoodToyInputs();
+    public void postGoodChildToy(GoodChildToyDto gToyDto){
         goodToyRepository.save(new GoodChildToy(gToyDto.title(), gToyDto.brand(), gToyDto.recommendedAge(), gToyDto.category()));
-        ElfView.showToyAdded();
+        
     }
 
-    private void addBadChildToy(){
-        BadChildToyDto bToyDto = ElfView.createBadToyInputs();
+    public void postBadChildToy(BadChildToyDto bToyDto){
         badToyRepository.save(new BadChildToy(bToyDto.title(), bToyDto.content()));
-        ElfView.showToyAdded();
+       
     }
 
-    public void showToys(){
-        ElfView.showGoodAndBadToys(goodToyRepository.getAll() , badToyRepository.getAll());
+    public List<GoodChildToy> getGoodChildrenToys(){
+        return goodToyRepository.getAll();
     }
+
+    public List<BadChildToy> getBadChildrenToys(){
+        return badToyRepository.getAll();
+    }
+    
 
 }

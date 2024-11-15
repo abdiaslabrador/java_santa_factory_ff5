@@ -1,4 +1,5 @@
 package dev.proyect.santa_factory.controllers;
+import dev.proyect.santa_factory.views.ElfView;
 import dev.proyect.santa_factory.views.MenuView;
 
 public class MenuController {
@@ -14,7 +15,7 @@ public class MenuController {
             int selection = MenuView.showMainMenu();
             
             if(selection == 1){
-                elfController.elfMenu();
+                ElfView.elfMenu(elfController);
             }
             if (selection == 3) {
                 break;

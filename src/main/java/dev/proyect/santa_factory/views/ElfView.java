@@ -2,12 +2,39 @@ package dev.proyect.santa_factory.views;
 
 import java.util.List;
 
+import dev.proyect.santa_factory.controllers.ElfController;
 import dev.proyect.santa_factory.dtos.BadChildToyDto;
 import dev.proyect.santa_factory.dtos.GoodChildToyDto;
 import dev.proyect.santa_factory.models.BadChildToy;
 import dev.proyect.santa_factory.models.GoodChildToy;
 
 public class ElfView extends CloseSessionView {
+
+    public static void elfMenu(ElfController elfController){
+        int selection;
+        int goodOrbadSelection;
+        do{
+            selection = showElfMenu();
+            if(selection == 1){
+                goodOrbadSelection = showToyMenu();
+                if(goodOrbadSelection == 1){
+                    elfController.postGoodChildToy(createGoodToyInputs());
+                    showToyAdded();
+                }
+                if(goodOrbadSelection == 2){
+                    elfController.postBadChildToy(createBadToyInputs());
+                    showToyAdded();
+                }
+            }
+            else if(selection == 2){
+                showGoodAndBadToys(elfController.getGoodChildrenToys(), elfController.getBadChildrenToys());
+            }
+            else if(selection == 4){
+                showCloseSession();
+            }
+        }while(selection != 4);
+            
+    }
 
     public static int showElfMenu(){
         int selection = 0;
