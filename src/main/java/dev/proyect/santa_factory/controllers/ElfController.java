@@ -32,9 +32,10 @@ public class ElfController {
     private void addToyMenu(){
         ElfView.showToyMenu();
         GoodChildToyDto gToyDto = ElfView.createGoodToyInputs();
-        GoodChildToy goodChildToyDto = new GoodChildToy(gToyDto.title(), true, gToyDto.brand(), gToyDto.recommendedAge(), gToyDto.category());
-        goodToyRepository.save(goodChildToyDto);
+        GoodChildToy gChildToy = new GoodChildToy(gToyDto.title(), true, gToyDto.brand(), gToyDto.recommendedAge(), gToyDto.category());
+        goodToyRepository.save(gChildToy);
         ElfView.showToyAdded();
+        ElfView.showToy(gChildToy);
     }
     
 }

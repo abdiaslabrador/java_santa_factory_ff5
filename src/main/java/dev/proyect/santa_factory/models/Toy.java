@@ -4,12 +4,23 @@ public abstract class Toy {
     private String id;
     private String title;
     private boolean isGoodToy;
+    private static int maxId = 1;
 
     public Toy(String title, boolean isGoodToy){
         this.title = title;
         this.isGoodToy = isGoodToy;
+        setId(maxId++);
     }
 
+
+    public boolean isGoodToy() {
+        return isGoodToy;
+    }
+
+    public void setGoodToy(boolean isGoodToy) {
+        this.isGoodToy = isGoodToy;
+    }
+    
     public String getId() {
         return id;
     }

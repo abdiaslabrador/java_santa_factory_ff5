@@ -14,7 +14,7 @@ public class GoodToyRepository implements InterfaceRepository {
 
     @Override
     public void save(Toy toy) {
-       if (toy instanceof GoodChildToy) {
+       if (toy.isGoodToy()) {
             Database.goodChildrenToys.add((GoodChildToy) toy);
         }
     }

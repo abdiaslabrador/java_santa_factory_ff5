@@ -10,7 +10,7 @@ public class GoodChildToy extends Toy{
         super(title, isGoodToy);
         this.brand = brand;
         this.recommendAge = recommendAge;
-        this.category = category;
+        this.category = category;        
     }
 
 
@@ -43,5 +43,12 @@ public class GoodChildToy extends Toy{
         this.category = category;
     }
     
-    
+    @Override
+    public String toString() {
+        return  "\nID: " + this.getId() +
+                "\nTitulo: " + this.getTitle() +
+                "\nMarca: " + this.brand +
+                "\nEdad: " + this.recommendAge +
+                "\nCategoria: " + this.category;
+    }
 }

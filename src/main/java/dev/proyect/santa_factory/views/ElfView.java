@@ -1,8 +1,9 @@
 package dev.proyect.santa_factory.views;
 
 import dev.proyect.santa_factory.dtos.GoodChildToyDto;
+import dev.proyect.santa_factory.models.Toy;
 
-public class ElfView extends CloseSessionView{
+public class ElfView extends CloseSessionView {
 
     public static int showElfMenu(){
         int selection = 0;
