@@ -16,11 +16,17 @@ public class ElfController {
 
     public  void elfMenu(){
         int selection;
-
+        int goodOrbadSelection;
         do{
             selection = ElfView.showElfMenu();
             if(selection == 1){
-                addToyMenu();
+                goodOrbadSelection = ElfView.showToyMenu();
+                if(goodOrbadSelection == 1){
+                    addGoodToy();
+                }
+                if(goodOrbadSelection == 2){
+                    
+                }
             }
             if(selection == 4){
                 ElfView.showCloseSession();
@@ -29,12 +35,9 @@ public class ElfController {
             
     }
 
-    private void addToyMenu(){
-        ElfView.showToyMenu();
+    private void addGoodToy(){
         GoodChildToyDto gToyDto = ElfView.createGoodToyInputs();
         goodToyRepository.save(new GoodChildToy(gToyDto.title(), true, gToyDto.brand(), gToyDto.recommendedAge(), gToyDto.category()));
         ElfView.showToyAdded();
-        
     }
-    
 }
