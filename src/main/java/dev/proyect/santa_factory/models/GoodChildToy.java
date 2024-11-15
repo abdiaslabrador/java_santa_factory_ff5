@@ -6,8 +6,8 @@ public class GoodChildToy extends Toy{
     private int recommendAge;
     private String category;
 
-    public GoodChildToy(String title, boolean isGoodToy, String brand, int recommendAge, String category){
-        super(title, isGoodToy);
+    public GoodChildToy(String title, String brand, int recommendAge, String category){
+        super(title, true);
         this.brand = brand;
         this.recommendAge = recommendAge;
         this.category = category;        

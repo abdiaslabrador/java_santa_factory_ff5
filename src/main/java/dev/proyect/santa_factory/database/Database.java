@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dev.proyect.santa_factory.models.GoodChildToy;
+import dev.proyect.santa_factory.models.BadChildToy;
+
 
 public class Database {
     public static List<GoodChildToy>  goodChildrenToys = new ArrayList<>();
-    // public List<> badChildrenToys = new ArrayList<>();
+    public static List<BadChildToy> badChildrenToys = new ArrayList<>();
 }

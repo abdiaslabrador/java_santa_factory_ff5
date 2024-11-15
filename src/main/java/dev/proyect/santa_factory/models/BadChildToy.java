@@ -3,7 +3,7 @@ package dev.proyect.santa_factory.models;
 public class BadChildToy extends Toy{
     String content;
 
-    public BadChildToy(String title, boolean isGoodToy, String content){
+    public BadChildToy(String title, String content){
         super(title, false);
         this.content = content;
     }
@@ -16,4 +16,10 @@ public class BadChildToy extends Toy{
         this.content = content;
     }
     
+    @Override
+    public String toString() {
+        return  "\nID: " + this.getId() +
+                "\nTitulo: " + this.getTitle() +
+                "\nContenido: " + this.content;
+    }
 }

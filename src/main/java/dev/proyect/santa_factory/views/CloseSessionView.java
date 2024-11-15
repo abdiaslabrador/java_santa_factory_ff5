@@ -10,5 +10,5 @@ public abstract class CloseSessionView extends View{
     public static void showToy(Toy toy) {
         System.out.println(toy.toString());
     }
-
+    
 }

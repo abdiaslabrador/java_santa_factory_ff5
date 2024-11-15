@@ -1,7 +1,7 @@
 package dev.proyect.santa_factory.views;
 
+import dev.proyect.santa_factory.dtos.BadChildToyDto;
 import dev.proyect.santa_factory.dtos.GoodChildToyDto;
-import dev.proyect.santa_factory.models.Toy;
 
 public class ElfView extends CloseSessionView {
 
@@ -47,8 +47,17 @@ public class ElfView extends CloseSessionView {
         return goodChildToy;
     }
 
+    public static BadChildToyDto createBadToyInputs(){
+        System.out.println("Ingrese el título:");
+        String title = scanner.nextLine();
+        System.out.println("Ingrese contenido:");
+        String content = scanner.nextLine();
+        BadChildToyDto badChildToy = new BadChildToyDto(title, content);
+        return badChildToy;
+    }
+
     public static void showToyAdded(){
         System.out.println("\nJuguete añadido con éxito");
-    }
+    }    
     
 }
