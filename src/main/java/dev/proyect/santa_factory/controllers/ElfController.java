@@ -39,5 +39,8 @@ public class ElfController {
         return badToyRepository.getAll();
     }
     
-
+    public boolean deleteChildrenToy(String id){
+        if (badToyRepository.delete(id) || goodToyRepository.delete(id)) return true;
+        return false;
+    }
 }

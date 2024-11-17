@@ -27,10 +27,15 @@ public class ElfView extends CloseSessionView {
                 }
             }
             else if(selection == 2){
-                showGoodAndBadToys(elfController.getGoodChildrenToys(), elfController.getBadChildrenToys());
+                showGoodAndBadToys(elfController);
             }
             else if(selection == 3){
-                System.out.println();
+                if(elfController.getGoodChildrenToys().size() > 0 || elfController.getBadChildrenToys().size() > 0){
+                    showToysToDelte(elfController);
+                    idToDeleteInput(elfController);
+                }else{
+                    System.out.println("No hay juguetes para eliminar");
+                }
             }
             else if(selection == 4){
                 showCloseSession();
@@ -94,10 +99,10 @@ public class ElfView extends CloseSessionView {
         System.out.println("\nJuguete añadido con éxito");
     }    
     
-    public static void showGoodAndBadToys(List<GoodChildToy> goodChildtoys, List<BadChildToy> badChildtoys){
+    public static void showGoodAndBadToys(ElfController elfController){
         System.out.println("\nLista de juguetes:");
-        showGoodChidrenToys(goodChildtoys);
-        showBadChidrenToys(badChildtoys);
+        showGoodChidrenToys(elfController.getGoodChildrenToys());
+        showBadChidrenToys(elfController.getBadChildrenToys());
     }
 
     public static void showGoodChidrenToys(List<GoodChildToy> toys){
@@ -109,6 +114,27 @@ public class ElfView extends CloseSessionView {
     public static void showBadChidrenToys(List<BadChildToy> toys){
         for (BadChildToy badChildToy : toys) {
             System.out.println(badChildToy.toString());
+        }
+    }
+
+    public static void showToysToDelte(ElfController elfController){
+        System.out.println("\nLista de juguetes:");
+        for (GoodChildToy goodChildToy : elfController.getGoodChildrenToys()) {
+            System.out.println(goodChildToy.getId() + ". Título: " + goodChildToy.getTitle());
+        }   
+    
+        for (BadChildToy badChildToy : elfController.getBadChildrenToys()) {
+            System.out.println(badChildToy.getId() + ". Título: " + badChildToy.getTitle());
+        }
+    }
+
+    public static void idToDeleteInput(ElfController elfController){
+        System.out.print("Ingrese el identificador del juguete a eliminar: ");
+        String id = scanner.nextLine();
+        if(elfController.deleteChildrenToy(id)){
+            System.out.println("Juguete eliminado con éxito");
+        }else{
+            System.out.println("Juguete no encontrado");
         }
     }
 }

@@ -23,8 +23,8 @@ public class BadToyRepository implements InterfaceRepository{
     }
 
     @Override
-    public void delete(String id) {
-        Database.badChildrenToys.removeIf(item -> item.getId() == id);
+    public boolean delete(String id) {
+        return Database.badChildrenToys.removeIf(item -> item.getId().toLowerCase().equals(id.toLowerCase()));
     }
     
 }
