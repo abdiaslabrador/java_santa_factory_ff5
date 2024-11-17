@@ -1,7 +1,6 @@
 package dev.proyect.santa_factory.controllers;
 import dev.proyect.santa_factory.repositories.GoodToyRepository;
 import dev.proyect.santa_factory.repositories.BadToyRepository;
-import dev.proyect.santa_factory.views.ElfView;
 import dev.proyect.santa_factory.models.BadChildToy;
 import dev.proyect.santa_factory.models.GoodChildToy;
 import dev.proyect.santa_factory.dtos.GoodChildToyDto;

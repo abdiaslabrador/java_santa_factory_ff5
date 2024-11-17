@@ -29,6 +29,9 @@ public class ElfView extends CloseSessionView {
             else if(selection == 2){
                 showGoodAndBadToys(elfController.getGoodChildrenToys(), elfController.getBadChildrenToys());
             }
+            else if(selection == 3){
+                System.out.println();
+            }
             else if(selection == 4){
                 showCloseSession();
             }
@@ -92,6 +95,7 @@ public class ElfView extends CloseSessionView {
     }    
     
     public static void showGoodAndBadToys(List<GoodChildToy> goodChildtoys, List<BadChildToy> badChildtoys){
+        System.out.println("\nLista de juguetes:");
         showGoodChidrenToys(goodChildtoys);
         showBadChidrenToys(badChildtoys);
     }

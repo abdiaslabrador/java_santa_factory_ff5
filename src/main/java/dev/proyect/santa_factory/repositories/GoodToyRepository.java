@@ -10,10 +10,6 @@ import dev.proyect.santa_factory.models.Toy;
 
 public class GoodToyRepository implements InterfaceRepository {
 
-    public GoodToyRepository(){
-
-    }
-
     @Override
     public void save(Toy toy) {
        if (toy.isGoodToy()) {
@@ -22,11 +18,10 @@ public class GoodToyRepository implements InterfaceRepository {
         }
     }
 
-    // @Override
-    // public void delete() {
-    //     // TODO Auto-generated method stub
-    //     throw new UnsupportedOperationException("Unimplemented method 'delete'");
-    // }
+    @Override
+    public void delete(String id) {
+        Database.goodChildrenToys.removeIf(item -> item.getId() == id);
+    }
 
     @Override
     public List<GoodChildToy> getAll() {

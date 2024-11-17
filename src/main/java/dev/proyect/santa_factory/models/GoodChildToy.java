@@ -45,10 +45,10 @@ public class GoodChildToy extends Toy{
     
     @Override
     public String toString() {
-        return  "\nID: " + this.getId() +
-                "\nTitulo: " + this.getTitle() +
-                "\nMarca: " + this.brand +
-                "\nEdad: " + this.recommendAge +
-                "\nCategoria: " + this.category;
+        return  this.getId()+". " + 
+                "Titulo: " + this.getTitle() + 
+                ", Marca: " + this.brand +
+                ", Edad: " + this.recommendAge + 
+                ", Categoria: " + this.category;
     }
 }

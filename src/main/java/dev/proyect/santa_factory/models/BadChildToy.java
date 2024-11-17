@@ -18,8 +18,8 @@ public class BadChildToy extends Toy{
     
     @Override
     public String toString() {
-        return  "\nID: " + this.getId() +
-                "\nTitulo: " + this.getTitle() +
-                "\nContenido: " + this.content;
+        return  this.getId() + 
+                ". Titulo: " + this.getTitle() + 
+                ", Contenido: " + this.content;
     }
 }

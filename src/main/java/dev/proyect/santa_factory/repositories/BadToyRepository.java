@@ -22,10 +22,9 @@ public class BadToyRepository implements InterfaceRepository{
         }
     }
 
-    // @Override
-    // public void delete() {
-    //     // TODO Auto-generated method stub
-    //     throw new UnsupportedOperationException("Unimplemented method 'delete'");
-    // }
+    @Override
+    public void delete(String id) {
+        Database.badChildrenToys.removeIf(item -> item.getId() == id);
+    }
     
 }
