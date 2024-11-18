@@ -1,13 +1,10 @@
 package dev.proyect.santa_factory;
-
-import dev.proyect.santa_factory.controllers.MenuController;
+import dev.proyect.santa_factory.views.MenuView;
 
 public final class App {
     
     public static void main(String[] args) {
-        MenuController momMenuController = new MenuController();
-        momMenuController.start();
+        MenuView menu = new MenuView();
+        menu.start();
     }
-
-    
 }

@@ -1,7 +1,35 @@
 package dev.proyect.santa_factory.views;
+import dev.proyect.santa_factory.controllers.ToyController;
 
-public class MenuView extends View{
-    public static int showMainMenu(){
+public class MenuView extends View {
+
+    ToyController controller;
+    ElfView elfView;
+    SantaView sataView;
+
+    public MenuView(){
+        controller = new ToyController(); 
+        elfView = new ElfView();
+        sataView = new SantaView();
+    }
+
+    public void start(){
+        while (true) {
+            int selection = showMenu();
+            if(selection == 1){
+                elfView.menu(controller);
+            }
+            else if(selection == 2){
+                sataView.menu(controller);
+            }
+            if (selection == 3) {
+                break;
+            }
+        }
+        
+    }
+            
+    private int showMenu(){
         int selection = 0;
         while(selection < 1 || selection > 3) {
             System.out.println("\nIniciar sesión de trabajo como:");

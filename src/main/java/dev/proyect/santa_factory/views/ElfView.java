@@ -1,50 +1,42 @@
 package dev.proyect.santa_factory.views;
 
-import java.util.List;
-
-import dev.proyect.santa_factory.controllers.ElfController;
+import dev.proyect.santa_factory.controllers.ToyController;
 import dev.proyect.santa_factory.dtos.BadChildToyDto;
 import dev.proyect.santa_factory.dtos.GoodChildToyDto;
 import dev.proyect.santa_factory.models.BadChildToy;
 import dev.proyect.santa_factory.models.GoodChildToy;
 
-public class ElfView extends CloseSessionView {
-
-    public static void elfMenu(ElfController elfController){
+public class ElfView extends CloseSessionView{
+    
+    public void menu(ToyController controller){
         int selection;
         int goodOrbadSelection;
         do{
-            selection = showElfMenu();
+            selection = showMenu();
             if(selection == 1){
                 goodOrbadSelection = showToyMenu();
                 if(goodOrbadSelection == 1){
-                    elfController.postGoodChildToy(createGoodToyInputs());
+                    controller.postGoodChildToy(createGoodToyInputs());
                     showToyAdded();
                 }
                 if(goodOrbadSelection == 2){
-                    elfController.postBadChildToy(createBadToyInputs());
+                    controller.postBadChildToy(createBadToyInputs());
                     showToyAdded();
                 }
             }
             else if(selection == 2){
-                showGoodAndBadToys(elfController);
+                showGoodAndBadToys(controller);
             }
             else if(selection == 3){
-                if(elfController.getGoodChildrenToys().size() > 0 || elfController.getBadChildrenToys().size() > 0){
-                    showToysToDelte(elfController);
-                    idToDeleteInput(elfController);
-                }else{
-                    System.out.println("No hay juguetes para eliminar");
-                }
-            }
-            else if(selection == 4){
+                showToysToDelete(controller);
+            }else if(selection == 4){
                 showCloseSession();
             }
         }while(selection != 4);
             
     }
 
-    public static int showElfMenu(){
+    private int showMenu(){
         int selection = 0;
         while(selection < 1 || selection > 4) {
             System.out.println("\nGestor de juguetes (Tipo de sesión: Elfo)");
@@ -59,7 +51,7 @@ public class ElfView extends CloseSessionView {
         return selection;
     }
 
-    public static int showToyMenu(){
+    private int showToyMenu(){
         int selection = 0;
         while(selection < 1 || selection > 2) {
             System.out.println("\nPara niño ...:");
@@ -72,7 +64,7 @@ public class ElfView extends CloseSessionView {
         return selection;
     }
 
-    public static GoodChildToyDto createGoodToyInputs(){
+    private GoodChildToyDto createGoodToyInputs(){
         System.out.println("Ingrese el título:");
         String title = scanner.nextLine();
         System.out.println("Ingrese la marca:");
@@ -86,7 +78,7 @@ public class ElfView extends CloseSessionView {
         return goodChildToy;
     }
 
-    public static BadChildToyDto createBadToyInputs(){
+    private BadChildToyDto createBadToyInputs(){
         System.out.println("Ingrese el título:");
         String title = scanner.nextLine();
         System.out.println("Ingrese contenido:");
@@ -95,43 +87,35 @@ public class ElfView extends CloseSessionView {
         return badChildToy;
     }
 
-    public static void showToyAdded(){
+    private void showToyAdded(){
         System.out.println("\nJuguete añadido con éxito");
     }    
     
-    public static void showGoodAndBadToys(ElfController elfController){
+    private void showGoodAndBadToys(ToyController controller){
         System.out.println("\nLista de juguetes:");
-        showGoodChidrenToys(elfController.getGoodChildrenToys());
-        showBadChidrenToys(elfController.getBadChildrenToys());
+        showChidrenToys(controller.getGoodChildrenToys(), "No hay juguetes para niños buenos");
+        showChidrenToys(controller.getBadChildrenToys(), "No hay juguetes para niños malos");
     }
 
-    public static void showGoodChidrenToys(List<GoodChildToy> toys){
-        for (GoodChildToy goodChildToy : toys) {
-            System.out.println(goodChildToy.toString());
+    private void showToysToDelete(ToyController controller){
+        if(controller.getGoodChildrenToys().size() > 0 || controller.getBadChildrenToys().size() > 0){
+            System.out.println("\nLista de juguetes:");
+            for (GoodChildToy goodChildToy : controller.getGoodChildrenToys()) {
+                System.out.println(goodChildToy.getId() + ". Título: " + goodChildToy.getTitle());
+            }   
+            for (BadChildToy badChildToy : controller.getBadChildrenToys()) {
+                System.out.println(badChildToy.getId() + ". Título: " + badChildToy.getTitle());
+            }
+            idToDeleteInput(controller);
+        }else{
+            System.out.println("\nNo hay juguetes para eliminar");
         }
     }
 
-    public static void showBadChidrenToys(List<BadChildToy> toys){
-        for (BadChildToy badChildToy : toys) {
-            System.out.println(badChildToy.toString());
-        }
-    }
-
-    public static void showToysToDelte(ElfController elfController){
-        System.out.println("\nLista de juguetes:");
-        for (GoodChildToy goodChildToy : elfController.getGoodChildrenToys()) {
-            System.out.println(goodChildToy.getId() + ". Título: " + goodChildToy.getTitle());
-        }   
-    
-        for (BadChildToy badChildToy : elfController.getBadChildrenToys()) {
-            System.out.println(badChildToy.getId() + ". Título: " + badChildToy.getTitle());
-        }
-    }
-
-    public static void idToDeleteInput(ElfController elfController){
+    private void idToDeleteInput(ToyController controller){
         System.out.print("Ingrese el identificador del juguete a eliminar: ");
         String id = scanner.nextLine();
-        if(elfController.deleteChildrenToy(id)){
+        if(controller.deleteChildrenToy(id)){
             System.out.println("Juguete eliminado con éxito");
         }else{
             System.out.println("Juguete no encontrado");

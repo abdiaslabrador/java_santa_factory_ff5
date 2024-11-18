@@ -4,26 +4,21 @@ import dev.proyect.santa_factory.repositories.BadToyRepository;
 import dev.proyect.santa_factory.models.BadChildToy;
 import dev.proyect.santa_factory.models.GoodChildToy;
 import dev.proyect.santa_factory.dtos.GoodChildToyDto;
-
 import java.util.List;
-
 import dev.proyect.santa_factory.dtos.BadChildToyDto;
 
-
-
-public class ElfController {
+public class ToyController {
 
     private GoodToyRepository goodToyRepository;
     private BadToyRepository badToyRepository;
 
-    public ElfController(){
+    public ToyController(){
         goodToyRepository = new GoodToyRepository();
         badToyRepository = new BadToyRepository();
     }
 
     public void postGoodChildToy(GoodChildToyDto gToyDto){
         goodToyRepository.save(new GoodChildToy(gToyDto.title(), gToyDto.brand(), gToyDto.recommendedAge(), gToyDto.category()));
-        
     }
 
     public void postBadChildToy(BadChildToyDto bToyDto){
