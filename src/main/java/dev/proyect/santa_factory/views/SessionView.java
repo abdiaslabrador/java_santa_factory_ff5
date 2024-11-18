@@ -5,7 +5,7 @@ import java.util.List;
 import dev.proyect.santa_factory.models.Toy;
 
 
-public abstract class CloseSessionView extends View {
+public abstract class SessionView extends View {
     public static void showCloseSession() {
         System.out.println("\nSesión cerrada correctamente.");
     }

@@ -2,7 +2,7 @@ package dev.proyect.santa_factory.views;
 
 import dev.proyect.santa_factory.controllers.ToyController;
 
-public class SantaView extends CloseSessionView {
+public class SantaView extends SessionView {
 
     public void menu(ToyController controller){
         int selection;

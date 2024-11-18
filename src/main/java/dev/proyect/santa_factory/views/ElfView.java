@@ -6,7 +6,7 @@ import dev.proyect.santa_factory.dtos.GoodChildToyDto;
 import dev.proyect.santa_factory.models.BadChildToy;
 import dev.proyect.santa_factory.models.GoodChildToy;
 
-public class ElfView extends CloseSessionView{
+public class ElfView extends SessionView{
     
     public void menu(ToyController controller){
         int selection;
