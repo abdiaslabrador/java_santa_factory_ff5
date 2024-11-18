@@ -7,10 +7,10 @@ public class MenuView extends View {
     ElfView elfView;
     SantaView sataView;
 
-    public MenuView(){
-        controller = new ToyController(); 
-        elfView = new ElfView();
-        sataView = new SantaView();
+    public MenuView(ToyController controller, ElfView elfView, SantaView sataView) {
+        this.controller = controller;
+        this.elfView = elfView;
+        this.sataView = sataView;
     }
 
     public void start(){
@@ -22,11 +22,10 @@ public class MenuView extends View {
             else if(selection == 2){
                 sataView.menu(controller);
             }
-            if (selection == 3) {
+            else if (selection == 3) {
                 break;
             }
         }
-        
     }
             
     private int showMenu(){

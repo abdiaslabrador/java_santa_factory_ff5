@@ -2,6 +2,7 @@ package dev.proyect.santa_factory.views;
 
 import java.util.List;
 
+import dev.proyect.santa_factory.controllers.ToyController;
 import dev.proyect.santa_factory.models.Toy;
 
 
@@ -20,4 +21,6 @@ public abstract class SessionView extends View {
         }
     }
     
+    public abstract void menu(ToyController controller);
+    public abstract int showMenu();
 }

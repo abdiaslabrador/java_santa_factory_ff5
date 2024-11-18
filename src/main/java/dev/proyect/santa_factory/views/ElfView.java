@@ -36,7 +36,7 @@ public class ElfView extends SessionView{
             
     }
 
-    private int showMenu(){
+    public int showMenu(){
         int selection = 0;
         while(selection < 1 || selection > 4) {
             System.out.println("\nGestor de juguetes (Tipo de sesión: Elfo)");
