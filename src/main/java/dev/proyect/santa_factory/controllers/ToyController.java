@@ -4,7 +4,14 @@ import dev.proyect.santa_factory.repositories.BadToyRepository;
 import dev.proyect.santa_factory.models.BadChildToy;
 import dev.proyect.santa_factory.models.GoodChildToy;
 import dev.proyect.santa_factory.dtos.GoodChildToyDto;
+
+import java.io.FileWriter;
+import java.io.Writer;
 import java.util.List;
+
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
+
 import dev.proyect.santa_factory.dtos.BadChildToyDto;
 
 public class ToyController {
@@ -37,5 +44,21 @@ public class ToyController {
     public boolean deleteChildrenToy(String id){
         if (badToyRepository.delete(id) || goodToyRepository.delete(id)) return true;
         return false;
+    }
+
+    public void generateCsv(){
+        try(Writer writer = new FileWriter("allToys.csv")){
+            writer.write("Lista de juguetes buenos\n");
+            StatefulBeanToCsv<GoodChildToy> beanToCsv = new StatefulBeanToCsvBuilder<GoodChildToy>(writer).withSeparator(',').withApplyQuotesToAll(false).build();
+            beanToCsv.write(goodToyRepository.getAll());
+            writer.write("\n\nLista de juguetes malos\n");
+            StatefulBeanToCsv<BadChildToy> beanToCsv2 = new StatefulBeanToCsvBuilder<BadChildToy>(writer).withSeparator(',').withApplyQuotesToAll(false).build();
+            beanToCsv2.write(badToyRepository.getAll());
+            writer.close();
+            System.out.println("\nLista de juguetes guardada.");
+        }
+        catch (Exception e) {
+            System.out.println("Ocurrió un error al escribir el archivo: " + e.getMessage());
+        }
     }
 }

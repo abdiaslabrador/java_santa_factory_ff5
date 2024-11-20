@@ -1,5 +1,4 @@
 package dev.proyect.santa_factory.views;
-
 import dev.proyect.santa_factory.controllers.ToyController;
 
 public class SantaView extends SessionView {
@@ -17,7 +16,7 @@ public class SantaView extends SessionView {
                 showChidrenToys(controller.getBadChildrenToys(), "No hay juguetes para niños malos");
             }
             else if(selection == 3){
-                System.out.println("por hacer");
+                controller.generateCsv();
             }
             else if(selection == 4){
                 showCloseSession();
@@ -40,5 +39,7 @@ public class SantaView extends SessionView {
             scanner.nextLine();
         }
         return selection;
-    } 
+    }
+    
+    
 }

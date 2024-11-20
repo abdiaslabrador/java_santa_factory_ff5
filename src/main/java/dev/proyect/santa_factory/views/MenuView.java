@@ -5,12 +5,12 @@ public class MenuView extends View {
 
     ToyController controller;
     ElfView elfView;
-    SantaView sataView;
+    SantaView santaView;
 
-    public MenuView(ToyController controller, ElfView elfView, SantaView sataView) {
+    public MenuView(ToyController controller, ElfView elfView, SantaView santaView) {
         this.controller = controller;
         this.elfView = elfView;
-        this.sataView = sataView;
+        this.santaView = santaView;
     }
 
     public void start(){
@@ -20,9 +20,10 @@ public class MenuView extends View {
                 elfView.menu(controller);
             }
             else if(selection == 2){
-                sataView.menu(controller);
+                santaView.menu(controller);
             }
             else if (selection == 3) {
+                scanner.close();
                 break;
             }
         }

@@ -1,8 +1,12 @@
 package dev.proyect.santa_factory.models;
+import com.opencsv.bean.CsvBindByPosition;
 
 public abstract class Toy {
+    @CsvBindByPosition(position = 0)
     private String id;
+    @CsvBindByPosition(position = 1)
     private String title;
+
     private boolean isGoodToy;
 
     public Toy(String title, boolean isGoodToy){

@@ -1,9 +1,12 @@
 package dev.proyect.santa_factory.models;
+import com.opencsv.bean.CsvBindByPosition;
 
 public class GoodChildToy extends Toy{
-
+    @CsvBindByPosition(position = 2)
     private String brand;
+    @CsvBindByPosition(position = 3)
     private int recommendAge;
+    @CsvBindByPosition(position = 4)
     private String category;
 
     public GoodChildToy(String title, String brand, int recommendAge, String category){
