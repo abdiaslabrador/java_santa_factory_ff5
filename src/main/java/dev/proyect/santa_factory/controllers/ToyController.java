@@ -47,18 +47,24 @@ public class ToyController {
     }
 
     public void generateCsv(){
-        try(Writer writer = new FileWriter("allToys.csv")){
-            writer.write("Lista de juguetes buenos\n");
+        try(Writer writer = new FileWriter("goodChidrenToys.csv")){
             StatefulBeanToCsv<GoodChildToy> beanToCsv = new StatefulBeanToCsvBuilder<GoodChildToy>(writer).withSeparator(',').withApplyQuotesToAll(false).build();
             beanToCsv.write(goodToyRepository.getAll());
-            writer.write("\n\nLista de juguetes malos\n");
-            StatefulBeanToCsv<BadChildToy> beanToCsv2 = new StatefulBeanToCsvBuilder<BadChildToy>(writer).withSeparator(',').withApplyQuotesToAll(false).build();
-            beanToCsv2.write(badToyRepository.getAll());
             writer.close();
-            System.out.println("\nLista de juguetes guardada.");
         }
         catch (Exception e) {
             System.out.println("Ocurrió un error al escribir el archivo: " + e.getMessage());
         }
+
+        try(Writer writer = new FileWriter("badChildrenToys.csv")){
+            StatefulBeanToCsv<BadChildToy> beanToCsv2 = new StatefulBeanToCsvBuilder<BadChildToy>(writer).withSeparator(',').withApplyQuotesToAll(false).build();
+            beanToCsv2.write(badToyRepository.getAll());
+            writer.close();
+        }
+        catch (Exception e) {
+            System.out.println("Ocurrió un error al escribir el archivo: " + e.getMessage());
+        }
+
+        System.out.println("\nLista de juguetes guardada.");
     }
 }
