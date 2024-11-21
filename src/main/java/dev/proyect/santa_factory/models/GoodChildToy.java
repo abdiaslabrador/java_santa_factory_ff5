@@ -8,12 +8,15 @@ public class GoodChildToy extends Toy{
     private int recommendAge;
     @CsvBindByPosition(position = 4)
     private String category;
+    private static int idGood=0;
 
     public GoodChildToy(String title, String brand, int recommendAge, String category){
         super(title, true);
         this.brand = brand;
         this.recommendAge = recommendAge;
-        this.category = category;        
+        this.category = category;
+        idGood +=1;
+        setId(idGood);        
     }
 
 

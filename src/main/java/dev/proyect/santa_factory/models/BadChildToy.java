@@ -4,10 +4,13 @@ import com.opencsv.bean.CsvBindByPosition;
 public class BadChildToy extends Toy{
     @CsvBindByPosition(position = 2)
     String content;
+    private static int idBad=0;
 
     public BadChildToy(String title, String content){
         super(title, false);
         this.content = content;
+        idBad+=1;
+        setId(idBad);        
     }
 
     public String getContent() {

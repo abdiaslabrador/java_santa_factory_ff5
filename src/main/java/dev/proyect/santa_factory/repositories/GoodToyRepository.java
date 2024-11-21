@@ -13,7 +13,6 @@ public class GoodToyRepository implements InterfaceRepository {
     @Override
     public void save(Toy toy) {
        if (toy.isGoodToy()) {
-            toy.setId(Database.goodChildrenToys.size()+1);
             Database.goodChildrenToys.add((GoodChildToy) toy);
         }
     }
