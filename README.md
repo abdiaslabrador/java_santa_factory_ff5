@@ -26,6 +26,30 @@ As Santa I WANT to log out TO end my work day.
 
 For each user story, acceptance criteria should be written.
 
+ # Prerequisites
+
+To run this project, you need to have the following installed:
+
+- [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/javase-downloads.html) (version 11 or higher).
+- [JUnit](https://junit.org/junit5/) for running tests.
+- [Hamcrest](http://hamcrest.org/JavaHamcrest/) for flexible assertions in tests.
+- [Maven](https://maven.apache.org/) for dependency management and build tasks.
+
+# Installation
+
+Follow these steps to set up and run the project locally:
+
+1. Clone the repository:
+  ```bash
+    https://github.com/abdiaslabrador/java_santa_factory_ff5.git
+  ```
+2. Navigate to the project folder:
+  ```bash
+    cd java_santa_factory_ff5
+  ```
+3. Run App.java:
+  with all the dependencies installed run the App.java
+
 # Test coverage (70%)
 ![github java_santa_factory_ff5 test](https://github.com/user-attachments/assets/9bcfc4c7-b68c-4031-9d32-c66d50328499)
 
@@ -38,6 +62,10 @@ For each user story, acceptance criteria should be written.
 
 - Class diagram
 ![github java_santa_factory_ff5-Class Diagram (3)](https://github.com/user-attachments/assets/2fb9a2aa-86d0-4b72-9403-a9c479add1a0)
+
+# jira
+![image](https://github.com/user-attachments/assets/b94ff653-3eb4-4dea-9c13-db8d0bd3b193)
+
 
 # By
 [Abdías Labrador](https://github.com/abdiaslabrador)
