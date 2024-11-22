@@ -6,11 +6,14 @@ public class BadChildToy extends Toy{
     String content;
     private static int idBad=0;
 
-    public BadChildToy(String title, String content){
-        super(title, false);
+    public BadChildToy(String title, String content){ 
+        super(idBad+=1, title, false);
         this.content = content;
-        idBad+=1;
-        setId(idBad);        
+    }
+
+    public BadChildToy(int id, String title, String content){
+        super(id, title, false);
+        this.content = content;
     }
 
     public String getContent() {

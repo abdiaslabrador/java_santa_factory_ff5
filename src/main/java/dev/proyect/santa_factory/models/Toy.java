@@ -9,11 +9,11 @@ public abstract class Toy {
 
     private boolean isGoodToy;
 
-    public Toy(String title, boolean isGoodToy){
+    public Toy(int id, String title, boolean isGoodToy){
         this.title = title;
         this.isGoodToy = isGoodToy;
+        setId(id);
     }
-
 
     public boolean isGoodToy() {
         return isGoodToy;

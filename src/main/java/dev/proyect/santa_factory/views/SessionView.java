@@ -1,6 +1,7 @@
 package dev.proyect.santa_factory.views;
 
 import java.util.List;
+import java.util.Scanner;
 
 import dev.proyect.santa_factory.controllers.ToyController;
 import dev.proyect.santa_factory.models.Toy;
@@ -11,7 +12,7 @@ public abstract class SessionView extends View {
         System.out.println("\nSesión cerrada correctamente.");
     }
     
-    public static void showChidrenToys(List<? extends Toy> toys, String noToyMsg){
+    public static void showChildrenToys(List<? extends Toy> toys, String noToyMsg){
         if(toys.size() > 0 ){
             for (Toy toy : toys) {
                 System.out.println(toy.toString());
@@ -21,6 +22,11 @@ public abstract class SessionView extends View {
         }
     }
     
-    public abstract void menu(ToyController controller);
-    public abstract int showMenu();
+    public static  int showMenu(Scanner scanner){
+        return 0;
+    };
+
+    public static void menu(ToyController controller){
+        System.out.println("muestra el menu");
+    };
 }

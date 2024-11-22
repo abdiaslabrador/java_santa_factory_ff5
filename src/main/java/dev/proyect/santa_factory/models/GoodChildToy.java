@@ -11,14 +11,18 @@ public class GoodChildToy extends Toy{
     private static int idGood=0;
 
     public GoodChildToy(String title, String brand, int recommendAge, String category){
-        super(title, true);
+        super(idGood+=1, title, true);
         this.brand = brand;
         this.recommendAge = recommendAge;
         this.category = category;
-        idGood +=1;
-        setId(idGood);        
     }
 
+    public GoodChildToy(int id, String title, String brand, int recommendAge, String category){
+        super(id, title, true);
+        this.brand = brand;
+        this.recommendAge = recommendAge;
+        this.category = category;
+    }
 
     public String getBrand() {
         return brand;

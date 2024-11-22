@@ -3,7 +3,6 @@ import dev.proyect.santa_factory.repositories.GoodToyRepository;
 import dev.proyect.santa_factory.repositories.BadToyRepository;
 import dev.proyect.santa_factory.models.BadChildToy;
 import dev.proyect.santa_factory.models.GoodChildToy;
-import dev.proyect.santa_factory.dtos.GoodChildToyDto;
 
 import java.io.FileWriter;
 import java.io.Writer;
@@ -11,8 +10,6 @@ import java.util.List;
 
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
-
-import dev.proyect.santa_factory.dtos.BadChildToyDto;
 
 public class ToyController {
 
@@ -23,13 +20,13 @@ public class ToyController {
         goodToyRepository = new GoodToyRepository();
         badToyRepository = new BadToyRepository();
     }
-
-    public void postGoodChildToy(GoodChildToyDto gToyDto){
-        goodToyRepository.save(new GoodChildToy(gToyDto.title(), gToyDto.brand(), gToyDto.recommendedAge(), gToyDto.category()));
+    
+    public void postGoodChildToy(GoodChildToy gChildToy){
+        goodToyRepository.save(gChildToy);
     }
 
-    public void postBadChildToy(BadChildToyDto bToyDto){
-        badToyRepository.save(new BadChildToy(bToyDto.title(), bToyDto.content()));
+    public void postBadChildToy(BadChildToy bChildToy){
+        badToyRepository.save(bChildToy);
        
     }
 
@@ -40,7 +37,7 @@ public class ToyController {
     public List<BadChildToy> getBadChildrenToys(){
         return badToyRepository.getAll();
     }
-    
+
     public boolean deleteChildrenToy(String id){
         if (badToyRepository.delete(id) || goodToyRepository.delete(id)) return true;
         return false;

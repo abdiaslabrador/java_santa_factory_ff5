@@ -1,5 +1,7 @@
 package dev.proyect.santa_factory.views;
 
+import java.util.Scanner;
+
 import dev.proyect.santa_factory.controllers.ToyController;
 import dev.proyect.santa_factory.dtos.BadChildToyDto;
 import dev.proyect.santa_factory.dtos.GoodChildToyDto;
@@ -8,19 +10,21 @@ import dev.proyect.santa_factory.models.GoodChildToy;
 
 public class ElfView extends SessionView{
     
-    public void menu(ToyController controller){
+    public static void menu(ToyController controller){
         int selection;
         int goodOrbadSelection;
         do{
-            selection = showMenu();
+            selection = showMenu(scanner);
             if(selection == 1){
-                goodOrbadSelection = showToyMenu();
+                goodOrbadSelection = showToyMenu(scanner);
                 if(goodOrbadSelection == 1){
-                    controller.postGoodChildToy(createGoodToyInputs());
+                    GoodChildToyDto gToy = createGoodToyInputs(scanner);
+                    controller.postGoodChildToy(new GoodChildToy(gToy.title(), gToy.brand(), gToy.recommendedAge(), gToy.category()));
                     showToyAdded();
                 }
                 if(goodOrbadSelection == 2){
-                    controller.postBadChildToy(createBadToyInputs());
+                    BadChildToyDto bToyDto = createBadToyInputs(scanner);
+                    controller.postBadChildToy(new BadChildToy(bToyDto.title(), bToyDto.content()));
                     showToyAdded();
                 }
             }
@@ -28,7 +32,7 @@ public class ElfView extends SessionView{
                 showGoodAndBadToys(controller);
             }
             else if(selection == 3){
-                showToysToDelete(controller);
+                showToysToDelete(controller, scanner);
             }else if(selection == 4){
                 showCloseSession();
             }
@@ -36,7 +40,7 @@ public class ElfView extends SessionView{
             
     }
 
-    public int showMenu(){
+    public static int showMenu(Scanner scanner){
         int selection = 0;
         while(selection < 1 || selection > 4) {
             System.out.println("\nGestor de juguetes (Tipo de sesión: Elfo)");
@@ -51,7 +55,7 @@ public class ElfView extends SessionView{
         return selection;
     }
 
-    private int showToyMenu(){
+    public static int showToyMenu(Scanner scanner){
         int selection = 0;
         while(selection < 1 || selection > 2) {
             System.out.println("\nPara niño ...:");
@@ -64,7 +68,7 @@ public class ElfView extends SessionView{
         return selection;
     }
 
-    private GoodChildToyDto createGoodToyInputs(){
+    public static GoodChildToyDto createGoodToyInputs(Scanner scanner){
         System.out.println("Ingrese el título:");
         String title = scanner.nextLine();
         System.out.println("Ingrese la marca:");
@@ -78,7 +82,7 @@ public class ElfView extends SessionView{
         return goodChildToy;
     }
 
-    private BadChildToyDto createBadToyInputs(){
+    public static  BadChildToyDto createBadToyInputs(Scanner scanner){
         System.out.println("Ingrese el título:");
         String title = scanner.nextLine();
         System.out.println("Ingrese contenido:");
@@ -87,32 +91,32 @@ public class ElfView extends SessionView{
         return badChildToy;
     }
 
-    private void showToyAdded(){
+    public static  void showToyAdded(){
         System.out.println("\nJuguete añadido con éxito");
     }    
     
-    private void showGoodAndBadToys(ToyController controller){
+    public static  void showGoodAndBadToys(ToyController controller){
         System.out.println("\nLista de juguetes:");
-        showChidrenToys(controller.getGoodChildrenToys(), "No hay juguetes para niños buenos");
-        showChidrenToys(controller.getBadChildrenToys(), "No hay juguetes para niños malos");
+        showChildrenToys(controller.getGoodChildrenToys(), "No hay juguetes para niños buenos");
+        showChildrenToys(controller.getBadChildrenToys(), "No hay juguetes para niños malos");
     }
 
-    private void showToysToDelete(ToyController controller){
+    public static void showToysToDelete(ToyController controller, Scanner scanner){
         if(controller.getGoodChildrenToys().size() > 0 || controller.getBadChildrenToys().size() > 0){
             System.out.println("\nLista de juguetes:");
             for (GoodChildToy goodChildToy : controller.getGoodChildrenToys()) {
-                System.out.println(goodChildToy.getId() + ". Título: " + goodChildToy.getTitle());
+                System.out.println(goodChildToy.getId() + ". Titulo: " + goodChildToy.getTitle());
             }   
             for (BadChildToy badChildToy : controller.getBadChildrenToys()) {
-                System.out.println(badChildToy.getId() + ". Título: " + badChildToy.getTitle());
+                System.out.println(badChildToy.getId() + ". Titulo: " + badChildToy.getTitle());
             }
-            idToDeleteInput(controller);
+            idToDeleteInput(controller, scanner);
         }else{
             System.out.println("\nNo hay juguetes para eliminar");
         }
     }
 
-    private void idToDeleteInput(ToyController controller){
+    public static void idToDeleteInput(ToyController controller, Scanner scanner){
         System.out.print("Ingrese el identificador del juguete a eliminar: ");
         String id = scanner.nextLine();
         if(controller.deleteChildrenToy(id)){

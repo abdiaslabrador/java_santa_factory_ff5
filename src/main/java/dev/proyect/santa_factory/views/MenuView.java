@@ -1,26 +1,24 @@
 package dev.proyect.santa_factory.views;
+import java.util.Scanner;
+
 import dev.proyect.santa_factory.controllers.ToyController;
 
 public class MenuView extends View {
 
     ToyController controller;
-    ElfView elfView;
-    SantaView santaView;
 
-    public MenuView(ToyController controller, ElfView elfView, SantaView santaView) {
+    public MenuView(ToyController controller) {
         this.controller = controller;
-        this.elfView = elfView;
-        this.santaView = santaView;
     }
 
     public void start(){
         while (true) {
-            int selection = showMenu();
+            int selection = showMenu(scanner);
             if(selection == 1){
-                elfView.menu(controller);
+                ElfView.menu(controller);
             }
             else if(selection == 2){
-                santaView.menu(controller);
+                SantaView.menu(controller);
             }
             else if (selection == 3) {
                 scanner.close();
@@ -29,7 +27,7 @@ public class MenuView extends View {
         }
     }
             
-    private int showMenu(){
+    public static int showMenu(Scanner scanner){
         int selection = 0;
         while(selection < 1 || selection > 3) {
             System.out.println("\nIniciar sesión de trabajo como:");
