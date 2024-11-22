@@ -36,7 +36,7 @@ For each user story, acceptance criteria should be written.
 - Activity Diagram Mr Santa Claus flow
 ![github java_santa_factory_ff5-Mr Claus - activity Diagram](https://github.com/user-attachments/assets/ab85790e-a9db-4de7-a669-49b1ea779277)
 
-# Class diagram
+- Class diagram
 ![github java_santa_factory_ff5-Class Diagram (3)](https://github.com/user-attachments/assets/2fb9a2aa-86d0-4b72-9403-a9c479add1a0)
 
 # By
